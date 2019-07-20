@@ -1,5 +1,5 @@
 function _find_sparse(s,eta)
-
+    # Relative "eta" based sparsity parameter
     s ./= sqrt(sum(s.^2))
     goodies = abs.(s) .- eta*maximum(abs.(s))
     s = goodies .* sign.(s)
