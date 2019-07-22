@@ -198,7 +198,11 @@ module spls
         B_rescaled = (sy./sX)' .* B
         yp_rescaled = X0*B_rescaled
 
-        intercept = self.centre(y .- yp_rescaled)
+        if self.centre != "none"
+            intercept = self.centre(y .- yp_rescaled)
+        else
+            intercept = mean(y .- yp_rescaled)
+        end
 
         yfit = yp_rescaled .+ intercept
         r = y .- yfit
