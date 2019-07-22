@@ -35,7 +35,7 @@ The mutable struct called by SNIPLS() will be populated with model results, such
 The module is consistent with the ScikitLearn API, e.g.
 
     import ScikitLearn.GridSearch:GridSearchCV
-    gridsearch = GridSearchCV(snipls.SNIPLS(), Dict(:eta => collect(0.9:-0.01:0.1),
+    gridsearch = GridSearchCV(spls.SPLS(), Dict(:eta => collect(0.9:-0.01:0.1),
                     :n_components => collect(1:4), :verbose => false))
     ScikitLearn.fit!(gridsearch,X,y)
     gridsearch.best_params_
@@ -49,7 +49,7 @@ module spls
 
     using Statistics, DataFrames, Parameters, Random
     import ScikitLearnBase: BaseRegressor, predict, fit!, @declare_hyperparameters
-    include("C:\\Users\\SerneeS1\\OneDrive - BASF\\JulDocs\\SNIPLS\\_sreg_utils.jl")
+    include("._sreg_utils.jl")
     export spls, SPLS, autoscale
 
     @with_kw mutable struct SPLS <: BaseRegressor
